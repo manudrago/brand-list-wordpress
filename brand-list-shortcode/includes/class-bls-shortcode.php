@@ -249,7 +249,7 @@ class BLS_Shortcode {
 }
 
 /* Bullet */
-" . ( $s['show_bullet'] === '1' && $s['bullet_style'] !== 'none' ? "
+" . ( $s['bullet_style'] !== 'none' ? "
 .bls-link::before {
     content: '" . $this->bullet_content( $s ) . "';
     color: {$this->esc_css_color( $s['bullet_color'] )};

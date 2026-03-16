@@ -66,7 +66,7 @@ class BLS_Admin {
             'link_target'    => [ '_self', '_blank' ],
         ];
         $int_fields    = [ 'columns' ];
-        $bool_fields   = [ 'hide_empty', 'show_bullet', 'show_divider', 'show_count', 'show_logo' ];
+        $bool_fields   = [ 'hide_empty', 'show_divider', 'show_count', 'show_logo' ];
 
         foreach ( $text_fields as $key ) {
             $clean[ $key ] = isset( $input[ $key ] )
@@ -222,13 +222,12 @@ class BLS_Admin {
                     <?php } ); ?>
 
                     <?php $this->render_section( __( '• Bullet', 'brand-list-shortcode' ), function() use ( $s ) { ?>
-                        <?php $this->field_checkbox( 'show_bullet',  __( 'Show bullet', 'brand-list-shortcode' ),       $s['show_bullet'] ); ?>
                         <?php $this->field_select(   'bullet_style', __( 'Bullet style', 'brand-list-shortcode' ),      $s['bullet_style'], [
+                            'none'    => __( 'No Bullet', 'brand-list-shortcode' ),
                             'disc'    => '• Disc',
                             'circle'  => '◦ Circle',
                             'square'  => '▪ Square',
                             'decimal' => '1. Decimal',
-                            'none'    => __( 'None', 'brand-list-shortcode' ),
                             'custom'  => __( 'Custom character', 'brand-list-shortcode' ),
                         ] ); ?>
                         <?php $this->field_text(  'bullet_custom', __( 'Custom bullet character', 'brand-list-shortcode' ), $s['bullet_custom'],

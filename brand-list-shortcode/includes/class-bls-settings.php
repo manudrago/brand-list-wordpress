@@ -62,8 +62,7 @@ class BLS_Settings {
             'border_color_hover'=> '#cccccc',
 
             /* ── Bullet / prefix ─────────────────────────────── */
-            'show_bullet'       => '1',               // 1 | 0
-            'bullet_style'      => 'disc',            // disc | circle | square | decimal | none | custom
+            'bullet_style'      => 'none',            // none | disc | circle | square | decimal | custom
             'bullet_custom'     => '›',               // used when bullet_style = custom
 
             /* ── Divider ─────────────────────────────────────── */

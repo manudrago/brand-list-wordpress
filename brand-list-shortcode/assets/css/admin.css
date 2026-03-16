@@ -1,0 +1,108 @@
+/**
+ * Brand List Shortcode – Admin styles
+ */
+
+/* ── Two-column layout ── */
+.bls-admin-wrap .bls-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.bls-admin-wrap #bls-settings-form {
+    flex: 1 1 620px;
+    min-width: 0;
+}
+
+.bls-preview-pane {
+    flex: 0 0 320px;
+    position: sticky;
+    top: 60px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.bls-preview-pane h2 {
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #50575e;
+}
+
+.bls-preview-frame {
+    background: repeating-conic-gradient(#f0f0f0 0% 25%, #fff 0% 50%) 0 0 / 16px 16px;
+    padding: 16px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+    min-height: 80px;
+}
+
+/* ── Section cards ── */
+.bls-section {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+}
+
+.bls-section-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #50575e;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.bls-table th {
+    width: 220px;
+    padding: 10px 10px 10px 0;
+    font-weight: 500;
+}
+
+.bls-table td {
+    padding: 8px 4px;
+}
+
+.bls-table .description {
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+/* ── Shortcode info box ── */
+.bls-shortcode-info {
+    display: block;
+    margin-bottom: 24px !important;
+}
+
+.bls-shortcode-info code {
+    background: #f6f7f7;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+/* ── Color pickers ── */
+.bls-color-picker + .wp-picker-container {
+    display: inline-block;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+    .bls-admin-wrap .bls-layout {
+        flex-direction: column;
+    }
+    .bls-preview-pane {
+        position: static;
+        width: 100%;
+        flex: none;
+    }
+}

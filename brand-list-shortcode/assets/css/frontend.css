@@ -1,0 +1,73 @@
+/**
+ * Brand List Shortcode – Frontend base styles
+ * Dynamic / settings-driven rules are injected as inline CSS by PHP.
+ */
+
+/* ── Box-sizing reset scoped to the plugin ── */
+.bls-wrapper,
+.bls-wrapper *,
+.bls-wrapper *::before,
+.bls-wrapper *::after {
+    box-sizing: border-box;
+}
+
+/* ── List reset ── */
+.bls-list {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ── Link reset ── */
+.bls-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.bls-link:hover,
+.bls-link:focus {
+    text-decoration: none;
+    outline-offset: 2px;
+}
+
+/* ── Item transition ── */
+.bls-item {
+    transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+/* ── Logo ── */
+.bls-logo {
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* ── Count badge ── */
+.bls-count {
+    flex-shrink: 0;
+}
+
+/* ── Title ── */
+.bls-title {
+    margin-bottom: 12px;
+}
+
+/* ── Horizontal specific: keep items inline & wrapping ── */
+.bls-dir-horizontal .bls-item {
+    display: inline-block;
+}
+
+/* ── Responsive grid fallback ── */
+@media (max-width: 640px) {
+    .bls-dir-grid .bls-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .bls-dir-grid .bls-list {
+        grid-template-columns: 1fr !important;
+    }
+}

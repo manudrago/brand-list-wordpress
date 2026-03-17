@@ -190,7 +190,7 @@ class BLS_Admin {
                     <?php } ); ?>
 
                     <?php $this->render_section( __( '📦 Container', 'brand-list-shortcode' ), function() use ( $s ) { ?>
-                        <?php $this->field_color( 'container_bg',      __( 'Background colour', 'brand-list-shortcode' ), $s['container_bg'] ); ?>
+                        <?php $this->field_color( 'container_bg',      __( 'Background colour', 'brand-list-shortcode' ), $s['container_bg'], true ); ?>
                         <?php $this->field_text(  'container_padding', __( 'Padding', 'brand-list-shortcode' ),           $s['container_padding'] ); ?>
                         <?php $this->field_text(  'container_radius',  __( 'Border radius', 'brand-list-shortcode' ),     $s['container_radius'] ); ?>
                     <?php } ); ?>
@@ -213,8 +213,8 @@ class BLS_Admin {
                     <?php $this->render_section( __( '🎨 Colours', 'brand-list-shortcode' ), function() use ( $s ) { ?>
                         <?php $this->field_color( 'text_color',         __( 'Link colour', 'brand-list-shortcode' ),              $s['text_color'] ); ?>
                         <?php $this->field_color( 'text_color_hover',   __( 'Link colour (hover)', 'brand-list-shortcode' ),      $s['text_color_hover'] ); ?>
-                        <?php $this->field_color( 'item_bg',            __( 'Item background', 'brand-list-shortcode' ),          $s['item_bg'] ); ?>
-                        <?php $this->field_color( 'item_bg_hover',      __( 'Item background (hover)', 'brand-list-shortcode' ),  $s['item_bg_hover'] ); ?>
+                        <?php $this->field_color( 'item_bg',            __( 'Item background', 'brand-list-shortcode' ),          $s['item_bg'], true ); ?>
+                        <?php $this->field_color( 'item_bg_hover',      __( 'Item background (hover)', 'brand-list-shortcode' ),  $s['item_bg_hover'], true ); ?>
                         <?php $this->field_color( 'border_color',       __( 'Item border colour', 'brand-list-shortcode' ),       $s['border_color'] ); ?>
                         <?php $this->field_color( 'border_color_hover', __( 'Item border colour (hover)', 'brand-list-shortcode' ),$s['border_color_hover'] ); ?>
                         <?php $this->field_text(  'item_padding',       __( 'Item padding', 'brand-list-shortcode' ),             $s['item_padding'] ); ?>
@@ -346,20 +346,52 @@ class BLS_Admin {
         <?php
     }
 
-    private function field_color( string $key, string $label, string $value ): void {
-        $id = 'bls_' . $key;
-        ?>
-        <tr>
-            <th scope="row"><label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $label ); ?></label></th>
-            <td>
-                <input type="text" id="<?php echo esc_attr( $id ); ?>"
-                       name="<?php echo esc_attr( BLS_OPTION . '[' . $key . ']' ); ?>"
-                       value="<?php echo esc_attr( $value ); ?>"
-                       class="bls-color-picker"
-                       data-default-color="<?php echo esc_attr( $value ); ?>">
-            </td>
-        </tr>
-        <?php
+    private function field_color( string $key, string $label, string $value, bool $allow_transparent = false ): void {
+        $id             = 'bls_' . $key;
+        $is_transparent = $allow_transparent && ( $value === 'transparent' );
+
+        if ( $allow_transparent ) {
+            // Picker is purely visual (no name). A hidden input carries the real value.
+            $picker_id    = $id . '_picker';
+            $picker_value = $is_transparent ? '#ffffff' : $value;
+            ?>
+            <tr>
+                <th scope="row"><label for="<?php echo esc_attr( $picker_id ); ?>"><?php echo esc_html( $label ); ?></label></th>
+                <td>
+                    <div class="bls-color-field-wrap">
+                        <input type="text" id="<?php echo esc_attr( $picker_id ); ?>"
+                               class="bls-color-picker bls-picker-with-transparent"
+                               value="<?php echo esc_attr( $picker_value ); ?>"
+                               data-default-color="<?php echo esc_attr( $picker_value ); ?>"
+                               data-hidden-id="<?php echo esc_attr( $id ); ?>">
+                        <input type="hidden" id="<?php echo esc_attr( $id ); ?>"
+                               name="<?php echo esc_attr( BLS_OPTION . '[' . $key . ']' ); ?>"
+                               value="<?php echo esc_attr( $value ); ?>">
+                        <label class="bls-transparent-label">
+                            <input type="checkbox" class="bls-transparent-cb"
+                                   data-picker-id="<?php echo esc_attr( $picker_id ); ?>"
+                                   data-hidden-id="<?php echo esc_attr( $id ); ?>"
+                                   <?php checked( $is_transparent ); ?>>
+                            <?php esc_html_e( 'Transparent', 'brand-list-shortcode' ); ?>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <?php
+        } else {
+            ?>
+            <tr>
+                <th scope="row"><label for="<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $label ); ?></label></th>
+                <td>
+                    <input type="text" id="<?php echo esc_attr( $id ); ?>"
+                           name="<?php echo esc_attr( BLS_OPTION . '[' . $key . ']' ); ?>"
+                           value="<?php echo esc_attr( $value ); ?>"
+                           class="bls-color-picker"
+                           data-default-color="<?php echo esc_attr( $value ); ?>">
+                </td>
+            </tr>
+            <?php
+        }
     }
 
     private function field_checkbox( string $key, string $label, string $value, string $desc = '' ): void {

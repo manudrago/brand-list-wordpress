@@ -95,6 +95,28 @@
     display: inline-block;
 }
 
+/* ── Transparent toggle ── */
+.bls-color-field-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bls-transparent-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #3c434a;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.bls-transparent-label input[type="checkbox"] {
+    margin: 0;
+}
+
 /* ── Responsive ── */
 @media (max-width: 960px) {
     .bls-admin-wrap .bls-layout {

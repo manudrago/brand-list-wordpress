@@ -170,10 +170,10 @@ class BLS_Shortcode {
 /* === Brand List Shortcode – dynamic styles === */
 
 .bls-wrapper {
-    background-color: {$this->esc_css_color( $s['container_bg'] )};
-    padding: {$this->sanitize_css_value( $s['container_padding'] )};
-    border-radius: {$this->sanitize_css_value( $s['container_radius'] )};
-    font-family: {$this->sanitize_css_font( $s['font_family'] )};
+    background-color: {$this->esc_css_color( $s['container_bg'] )} !important;
+    padding: {$this->sanitize_css_value( $s['container_padding'] )} !important;
+    border-radius: {$this->sanitize_css_value( $s['container_radius'] )} !important;
+    font-family: {$this->sanitize_css_font( $s['font_family'] )} !important;
     box-sizing: border-box;
 }
 
@@ -212,20 +212,20 @@ class BLS_Shortcode {
 /* Item */
 .bls-item {
     display: block;
-    border: 1px solid {$this->esc_css_color( $s['border_color'] )};
-    border-radius: {$this->sanitize_css_value( $s['item_radius'] )};
-    background-color: {$this->esc_css_color( $s['item_bg'] )};
+    border: 1px solid {$this->esc_css_color( $s['border_color'] )} !important;
+    border-radius: {$this->sanitize_css_value( $s['item_radius'] )} !important;
+    background-color: {$this->esc_css_color( $s['item_bg'] )} !important;
 }
 
 .bls-item:hover {
-    background-color: {$this->esc_css_color( $s['item_bg_hover'] )};
-    border-color: {$this->esc_css_color( $s['border_color_hover'] )};
+    background-color: {$this->esc_css_color( $s['item_bg_hover'] )} !important;
+    border-color: {$this->esc_css_color( $s['border_color_hover'] )} !important;
 }
 
 /* Divider */
 " . ( $s['show_divider'] === '1' ? "
-.bls-dir-vertical  .bls-item + .bls-item { border-top: {$this->sanitize_css_value( $s['divider_size'] )} solid {$this->esc_css_color( $s['divider_color'] )}; }
-.bls-dir-horizontal .bls-item + .bls-item { border-left: {$this->sanitize_css_value( $s['divider_size'] )} solid {$this->esc_css_color( $s['divider_color'] )}; }
+.bls-dir-vertical  .bls-item + .bls-item { border-top: {$this->sanitize_css_value( $s['divider_size'] )} solid {$this->esc_css_color( $s['divider_color'] )} !important; }
+.bls-dir-horizontal .bls-item + .bls-item { border-left: {$this->sanitize_css_value( $s['divider_size'] )} solid {$this->esc_css_color( $s['divider_color'] )} !important; }
 " : '' ) . "
 
 /* Link */
@@ -233,26 +233,26 @@ class BLS_Shortcode {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: {$this->sanitize_css_value( $s['item_padding'] )};
-    text-decoration: none;
-    color: {$this->esc_css_color( $s['text_color'] )};
-    font-size: {$this->sanitize_css_value( $s['font_size'] )};
-    font-weight: {$this->sanitize_css_value( $s['font_weight'] )};
-    line-height: {$this->sanitize_css_value( $s['line_height'] )};
-    text-transform: {$this->sanitize_css_value( $s['text_transform'] )};
+    padding: {$this->sanitize_css_value( $s['item_padding'] )} !important;
+    text-decoration: none !important;
+    color: {$this->esc_css_color( $s['text_color'] )} !important;
+    font-size: {$this->sanitize_css_value( $s['font_size'] )} !important;
+    font-weight: {$this->sanitize_css_value( $s['font_weight'] )} !important;
+    line-height: {$this->sanitize_css_value( $s['line_height'] )} !important;
+    text-transform: {$this->sanitize_css_value( $s['text_transform'] )} !important;
 }
 
 .bls-link:hover,
 .bls-link:focus {
-    color: {$this->esc_css_color( $s['text_color_hover'] )};
-    text-decoration: none;
+    color: {$this->esc_css_color( $s['text_color_hover'] )} !important;
+    text-decoration: none !important;
 }
 
 /* Bullet */
 " . ( $s['bullet_style'] !== 'none' ? "
 .bls-link::before {
     content: '" . $this->bullet_content( $s ) . "';
-    color: {$this->esc_css_color( $s['bullet_color'] )};
+    color: {$this->esc_css_color( $s['bullet_color'] )} !important;
     font-style: normal;
     flex-shrink: 0;
 }
@@ -260,16 +260,16 @@ class BLS_Shortcode {
 
 /* Logo */
 .bls-logo {
-    width: {$this->sanitize_css_value( $s['logo_width'] )};
-    height: {$this->sanitize_css_value( $s['logo_height'] )};
+    width: {$this->sanitize_css_value( $s['logo_width'] )} !important;
+    height: {$this->sanitize_css_value( $s['logo_height'] )} !important;
     object-fit: contain;
     flex-shrink: 0;
 }
 
 /* Count badge */
 .bls-count {
-    color: {$this->esc_css_color( $s['count_color'] )};
-    font-size: {$this->sanitize_css_value( $s['count_size'] )};
+    color: {$this->esc_css_color( $s['count_color'] )} !important;
+    font-size: {$this->sanitize_css_value( $s['count_size'] )} !important;
     margin-left: 4px;
 }
 
